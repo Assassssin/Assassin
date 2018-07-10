@@ -1,0 +1,15 @@
+<template name="pokemonData">
+<ul>
+  <li> Name: {{ename}}</li>
+  <li> Attack: {{base.Attack}}</li>
+  <li> Defense: {{base.Defense}}</li>
+  <li> HP: {{base.HP}}</li>
+  <li> Speed: {{base.Speed}}</li>
+  <li> Sp_Atk: {{base.Sp_Atk}}</li>
+  <li> Sp_Def: {{base.Sp_Def}}</li>
+  <li> Type:{{#each t in type}}{{t}}{{/each}}</li>
+</ul>
+<a target="_blank" href="https://pokemondb.net/pokedex/{{ename}}">(more info)</a><hr>
+<img src="https://img.pokemondb.net/artwork/{{ename}}.jpg">
+<!-- we could also look at https://pokeapi.co/ -->
+</template>

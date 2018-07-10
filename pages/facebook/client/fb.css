@@ -1,0 +1,10 @@
+div.fb-post {
+  margin:20px;
+  border:thin solid blue;
+  padding:10px;
+  background-color:rgb(230,240,250);
+}
+
+textarea#fb-posttext{
+  background-color:rgb(250,240,230);
+}

@@ -1,0 +1,11 @@
+<template name="userList">
+  <button class="add-me-js">Add me</button>
+  <button class="js-remove-all">Clear</button>
+  <ol>
+    {{#each connection in connections}}
+    <li> <a href="http://{{connection.localIP}}:3000">
+      {{connection.userName}} at {{connection.localIP}}
+    </a></li>
+    {{/each}}
+  </ol>
+</template>

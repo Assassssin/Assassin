@@ -1,0 +1,20 @@
+<template name="game">
+    <div id='page'>
+  <h1> Multiuser Networked Game!</h1>
+
+		<canvas id="drawSpace" class="js-canvas"
+		        width="600" height="300">
+			Your browser doesn't support the canvas. Get the latest verison of Chrome or FF or ...
+		</canvas>
+
+  Pick your color:
+  <input type="color" id="avatarColor"><br>
+  Insert your Pseudonym: <input type="text" id="name"><br>
+  <button id="join">Join</button>
+  	</div>
+    <ul>
+      {{#each a in avatars}}
+       <li>{{a.name}}: {{a.score}}</li>
+      {{/each}}
+    </ul>
+</template>
