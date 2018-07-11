@@ -3,7 +3,7 @@ Meteor.startup(function(){
 
   //Meteor.absoluteUrl.defaultOptions.rootUrl = 'http://leiner.cs-i.brandeis.edu:3000/';
 });
-//test comment
+
 // This helper can be used in any template
 // it returns the email address when givent
 // the userId from Meteor.userId()
