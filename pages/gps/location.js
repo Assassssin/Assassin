@@ -1,13 +1,12 @@
+var R = 6371e3; // metres
+var φ1 = lat1.toRadians();
+var φ2 = lat2.toRadians();
+var Δφ = (lat2-lat1).toRadians();
+var Δλ = (lon2-lon1).toRadians();
 
-varvar R  R ==  6371e  ,36371e3;;  // metres// metres
-varvar  φφ11  == lat1 lat1..toRadianstoRadians();();
-varvar  φφ22  == lat2 lat2..toRadianstoRadians();();
-varvar  ΔφΔφ  ==  ((lat2lat2--lat1lat1).).toRadianstoRadians();();
-varvar  ΔλΔλ  ==  ((lon2lon2--lon1lon1).).toRadianstoRadians();();
+var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+        Math.cos(φ1) * Math.cos(φ2) *
+        Math.sin(Δλ/2) * Math.sin(Δλ/2);
+var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-varvar a  a ==  MathMath..sinsin(Δφ/(Δφ/22))  **  MathMath..sinsin(Δφ/(Δφ/22))  ++
-               MathMath..coscos(φ(φ11))  **  MathMath..coscos(φ(φ22))  **
-               MathMath..sinsin(Δλ/(Δλ/22))  **  MathMath..sinsin(Δλ/(Δλ/22););
-varvar c  c ==  22  **  MathMath..atan2atan2((MathMath..sqrtsqrt((aa),),  MathMath..sqrtsqrt((11--aa));));
-
-varvar d  d == R  R ** c c;;
+var d = R * c;
