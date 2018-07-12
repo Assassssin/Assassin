@@ -1,0 +1,22 @@
+<template name="fbtimeline">
+  <h1>Status</h1>
+  {{> fbmakepost}}
+  <h1> Posts of your Friends</h1>
+  {{#each p in posts}}
+    {{> fbshowpost p=p}}
+  {{/each}}
+</template>
+
+<template name="fbmakepost">
+  <textarea id="fb-posttext" cols="100%" rows="5" placeholder="What is your status?">
+  </textarea>
+  <button id="submit" class="btn btn-small btn-info">Post status</button>
+</template>
+
+<template name="fbshowpost">
+  <div class="fb-post">
+    {{p.createdAt}}<br>
+    {{p.name}}<br>
+    {{p.text}}
+  </div>
+  </template>
