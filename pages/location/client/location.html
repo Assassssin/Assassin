@@ -7,6 +7,7 @@
 </head>
 
 <template name="location">
+  window.alert()
 {{#if currentUser}}
   {{> location_info user=user}}
   <table style="width:100%">
@@ -15,10 +16,10 @@
       <th> Distance:</th>
       <!-- <th> Latitude: </th>
       <th> Longitude: </th> -->
-
     </tr>
     {{#each p in profiles}}
       <tr>
+        window.alert()
         <td> {{p.name}} </td> <td>{{p.dist}} Meters</td> <!-- <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td> -->
       </tr>
     {{/each}}
