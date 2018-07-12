@@ -62,7 +62,7 @@ return d
 
 function getAllInRange(p){
   var victims = {}
-  for each (target in profiles){
+  for each (var target in Profiles){
     if (distance(p.location.lat, p.location.long, target.location.lat, target.location.long) <= 5){
       victims.push(target);
     }
