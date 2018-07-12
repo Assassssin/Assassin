@@ -41,6 +41,7 @@ Template.location_info.events({
 function toRadians(x){
   return x/180*Math.PI
 }
+
 function distance(lat1,lon1,lat2,lon2){
 var R = 6371e3; // metres
 //console.log(JSON.stringify([lat1,lon1,lat2,lon2]))
@@ -57,4 +58,20 @@ var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 var d = R * c;
 //console.log(JSON.stringify([d,R,c,a]))
 return d
+}
+
+function getAllInRange(p){
+  var victims = {}
+  for each (target in profiles){
+    if (distance(p.location.lat, p.location.long, target.location.lat, target.location.long) <= 5){
+      victims.push(target);
+    }
+  }
+  return victims;
+}
+
+function killAllInArray(victims){
+  for each (v in victims){
+    v.playing = false;
+  }
 }
