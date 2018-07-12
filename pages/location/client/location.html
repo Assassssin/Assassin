@@ -1,12 +1,22 @@
+<head>
+  <style>
+    table, th, td {
+        border: 1px solid black;
+    }
+  </style>
+</head>
+
 <template name="location">
 {{#if currentUser}}
   {{> location_info user=user}}
+  <table style="width:100%">
 <hr>
-<ol>
-{{#each p in profiles}}
-  <li>{{p.name}}: {{p.location.lat}} -- {{p.location.lon}}</li>
-{{/each}}
-</ol>
+    {{#each p in profiles}}
+      <tr>
+        <td> {{p.name}} </td> <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td>
+      </tr>
+    {{/each}}
+  </table>
 
 {{else}}
 You have to log in to access this page
