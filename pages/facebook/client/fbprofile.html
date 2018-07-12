@@ -1,0 +1,17 @@
+<template name="fbprofile">
+  <h1>Mini-FB Profile</h1>
+  {{#if currentUser}}
+    {{> fbinfo user=user}}
+  {{else}}
+  You have to log in to access this page
+  {{/if}}
+
+
+</template>
+
+<template name="fbinfo">
+  Your Full Name:
+    <input type="text" id="js-name" value="{{user.name}}">
+    <br>
+    <button id="js-submit" class="btn btn-info">Update Profile</button>
+</template>

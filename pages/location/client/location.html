@@ -1,0 +1,26 @@
+<template name="location">
+{{#if currentUser}}
+  {{> location_info user=user}}
+<hr>
+<ol>
+{{#each p in profiles}}
+  <li>{{p.name}}: {{p.location.lat}} -- {{p.location.lon}}</li>
+{{/each}}
+</ol>
+
+{{else}}
+You have to log in to access this page
+{{/if}}
+</template>
+
+<template name="location_info">
+  <button class="btn btn-lg btn-danger" id="start">Start</button>
+  <hr>
+  <center>
+  <h1 class="display-1 bg-info" id="gps">
+    GPS Position:<br>
+    Lat: {{position.coords.latitude}} <br>
+    Lon: {{position.coords.longitude}} <br>
+  </h1>
+</center>
+</template>
