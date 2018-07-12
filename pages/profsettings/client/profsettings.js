@@ -1,4 +1,4 @@
-Template.fbprofile.helpers({
+Template.profileset.helpers({
   user(){
     var theProfile = Profiles.findOne({owner:Meteor.userId()});
     if (!theProfile){
