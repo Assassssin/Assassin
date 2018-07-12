@@ -10,7 +10,12 @@
 {{#if currentUser}}
   {{> location_info user=user}}
   <table style="width:100%">
-<hr>
+    <tr>
+      <th> User: </th>
+      <th> Latitude: </th>
+      <th> Longtituide: </th>
+
+    </tr>
     {{#each p in profiles}}
       <tr>
         <td> {{p.name}} </td> <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td>
