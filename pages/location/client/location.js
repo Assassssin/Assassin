@@ -74,7 +74,9 @@ function getAllInRange(player){
 
 function getAllInRange(p){
   var victims = {}
-  for each (var target in Profiles){
+  var people = Profiles.find().aga();
+  while(people.hasNext()){
+    target = people.next();
     if (distance(p.location.lat, p.location.long, target.location.lat, target.location.long) <= 5){
       victims.push(target);
     }
