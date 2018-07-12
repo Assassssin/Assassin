@@ -1,12 +1,28 @@
+<head>
+  <style>
+    table, th, td {
+        border: 1px solid black;
+    }
+  </style>
+</head>
+
 <template name="location">
 {{#if currentUser}}
   {{> location_info user=user}}
-<hr>
-<ol>
-{{#each p in profiles}}
-  <li>{{p.name}}: {{p.dist}} === {{p.location.lat}} -- {{p.location.lon}} </li>
-{{/each}}
-</ol>
+  <table style="width:100%">
+    <tr>
+      <th> User: </th>
+      <th> Dist:</th>
+      <th> Latitude: </th>
+      <th> Longitude: </th>
+
+    </tr>
+    {{#each p in profiles}}
+      <tr>
+        <td> {{p.name}} </td> <td>{{p.dist}}</td> <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td>
+      </tr>
+    {{/each}}
+  </table>
 
 {{else}}
 You have to log in to access this page
@@ -14,12 +30,14 @@ You have to log in to access this page
 </template>
 
 <template name="location_info">
-  <button class="btn btn-lg btn-danger" id="start">Start</button>
   <hr>
+  <center>
   <h1 class="display-1 bg-info" id="gps">
-    GPS Position goes here:<br>
+    GPS Position:<br>
     Lat: {{position.coords.latitude}} <br>
     Lon: {{position.coords.longitude}} <br>
     Distance from me: {{dist}}
   </h1>
+  <button class="btn btn-lg btn-danger" id="start">Update</button> <br/><br/>
+</center>
 </template>
