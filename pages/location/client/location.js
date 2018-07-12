@@ -60,18 +60,28 @@ var d = R * c;
 return d
 }
 
-function getAllInRange(p){
-  var victims = {}
-  for each (target in profiles){
-    if (distance(p.location.lat, p.location.long, target.location.lat, target.location.long) <= 5){
-      victims.push(target);
+function getAllInRange(player){
+  var victims = {};
+  var profiles = Profiles.find();
+  while(profiles.hasNext()){
+    var p = profiles.next();
+    if (distance(me.location.lat, me.location.long, p.location.lat, p.location.long) <= 5){
+      victims.push(p);
     }
   }
   return victims;
 }
 
-function killAllInArray(victims){
-  for each (v in victims){
-    v.playing = false;
+//function killAllInArray(victims){
+  //for each (v in victims){
+  //  v.playing = false;
+//  }
+//}
+//vvictims
+Template.fbinfo.events({
+  "click #kill"(event,instance){
+    console.log('assassination started');
+    var victims = getAllInRange(this.user);
+    console.log(victims.length)
   }
-}
+})
