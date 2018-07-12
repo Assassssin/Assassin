@@ -19,8 +19,11 @@ Template.fbinfo.events({
     console.log('just read '+name);
     age = instance.$('#js-age').val();
     console.log('just read '+age);
+    pic = instance.$('#js-pic').val();
+    console.log('just read '+pic);
     this.user.name = name;
     this.user.age = age;
+    this.user.pic = pic;
     Profiles.update(this.user._id,this.user);
   }
 })

@@ -62,11 +62,21 @@ return d
 
 function getAllInRange(player){
   var victims = {};
-  var profiles = Profiles.find();
-  while(profiles.hasNext()){
-    var p = profiles.next();
+  var people = Profiles.find();
+  while(people.hasNext()){
+    var p = people.next();
     if (distance(me.location.lat, me.location.long, p.location.lat, p.location.long) <= 5){
       victims.push(p);
+    }
+    return victims;
+  }
+}
+
+function getAllInRange(p){
+  var victims = {}
+  for each (var target in Profiles){
+    if (distance(p.location.lat, p.location.long, target.location.lat, target.location.long) <= 5){
+      victims.push(target);
     }
   }
   return victims;
