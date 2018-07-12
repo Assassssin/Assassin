@@ -12,9 +12,7 @@ Template.location.helpers({
  })
 
 
-Template.location_info.helpers({
-
-  position(){
+Template.location_info.rendered = function(){
 
     let z = Geolocation.currentLocation()
     var theProfile = Profiles.findOne({owner:Meteor.userId()});
@@ -26,8 +24,7 @@ Template.location_info.helpers({
     }
     //console.log("in position")
     //console.dir(z)
-    return z}
-})
+}
 
 Template.location_info.events({
   "click #start": function(event,instance){
