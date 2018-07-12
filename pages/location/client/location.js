@@ -35,6 +35,15 @@ Template.location_info.events({
     //console.dir(['in location',z])
     instance.$("#gps").val("hi")
   }
+  "click #kill": function(event,instance){
+    const ps = Profiles.find({location:{$exists:true}}).fetch()
+    //console.log("sending profiles")
+    //console.dir(ps)
+    const me = Profiles.findOne({owner:Meteor.user()._id})
+    //console.dir(['me=',me,Meteor.user()._id])
+    dist = ps.map((p)=>{p.dist = distance(me.location.lat,me.location.lon,p.location.lat,p.location.lon)})
+    //console.dir(ps)
+  }
 })
 
 
