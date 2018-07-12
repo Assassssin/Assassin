@@ -4,7 +4,7 @@
 <hr>
 <ol>
 {{#each p in profiles}}
-  <li>{{p.name}}: {{p.location.lat}} -- {{p.location.lon}}</li>
+  <li>{{p.name}}: {{p.dist}} === {{p.location.lat}} -- {{p.location.lon}} </li>
 {{/each}}
 </ol>
 
@@ -20,5 +20,6 @@ You have to log in to access this page
     GPS Position goes here:<br>
     Lat: {{position.coords.latitude}} <br>
     Lon: {{position.coords.longitude}} <br>
+    Distance from me: {{dist}}
   </h1>
 </template>
