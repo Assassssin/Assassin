@@ -12,14 +12,14 @@
   <table style="width:100%">
     <tr>
       <th> User: </th>
+      <th> Distance:</th>
       <th> Latitude: </th>
       <th> Longitude: </th>
-      <th> Distance: </th>
 
     </tr>
     {{#each p in profiles}}
       <tr>
-        <td> {{p.name}} </td> <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td> <td> </td>
+        <td> {{p.name}} </td> <td>{{p.dist}}</td> <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td>
       </tr>
     {{/each}}
   </table>
@@ -36,6 +36,7 @@ You have to log in to access this page
     GPS Position:<br>
     Lat: {{position.coords.latitude}} <br>
     Lon: {{position.coords.longitude}} <br>
+    Distance from me: {{dist}}
   </h1>
   <button class="btn btn-lg btn-danger" id="start">Update</button> <br/><br/>
 </center>
