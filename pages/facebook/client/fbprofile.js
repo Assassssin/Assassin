@@ -24,6 +24,7 @@ Template.fbinfo.events({
     if (pic == ""){
       pic = "https://alvistor.com/wp-content/uploads/2017/11/Chrome-Incognito.jpg"
     }
+    console.log('just read '+pic);
     this.user.name = name;
     this.user.age = age;
     this.user.pic = pic;
