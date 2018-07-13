@@ -11,7 +11,7 @@
   {{> location_info user=user}}
   <table style="width:100%">
     <tr>
-      <th> User: </th>
+      <th colspan = '2'> User: </th>
       <th> Age: </th>
       <th> Distance:</th>
       <!-- <th> Latitude: </th>
@@ -19,7 +19,7 @@
     </tr>
     {{#each p in profiles}}
       <tr>
-        <td> <img src={{p.pic}} height = "50%" width = "20%" >{{p.name}} </td><td>{{p.age}}</td> <td>{{p.dist}} Meters</td> <!-- <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td> -->
+        <td width = 101> <img src={{p.pic}} height = 100 width = 100 > </td> <td> {{p.name}} </td><td>{{p.age}}</td> <td>{{p.dist}} Meters</td> <!-- <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td> -->
       </tr>
     {{/each}}
   </table>
