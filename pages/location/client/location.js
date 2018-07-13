@@ -65,6 +65,7 @@ function getAllInRange(playerboi){
   //for (var p in people){
     console.log(playerboi.name)
     var p = people[i]
+    console.log(p)
     // console.log(playerboi.location.lat)
     var d = distance(playerboi.location.lat,playerboi.location.lon, p.location.lat, p.location.lon)
     //var d=p.dist
@@ -103,8 +104,11 @@ function killAllInArray(victims){
 Template.location.events({
   "click #kill"(event,instance){
     console.log('assassination started');
-    var victims = getAllInRange(Profiles.findOne({owner:Meteor.user()._id}));
-    //console.log(victims.length);
-    killAllInArray(victims);
+    var player = Profiles.findOne({owner:Meteor.user()._id});
+    if(player.playing){
+      var victims = getAllInRange(Profiles.findOne({owner:Meteor.user()._id}));
+      //console.log(victims.length);
+      killAllInArray(victims);
+    }
   }
 })
