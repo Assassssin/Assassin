@@ -69,7 +69,7 @@ function getAllInRange(playerboi){
     var d = distance(playerboi.location.lat,playerboi.location.lon, p.location.lat, p.location.lon)
     //var d=p.dist
     console.log('name: ' + p.name + ' distance: ' + d);
-    if (d <= 5 && !(p == playerboi)){
+    if (d <= 5 && !(p._id == playerboi._id)){
       victims.push(p);
     }
   }
@@ -90,11 +90,13 @@ function getAllInRange(playerboi){
 }
 */
 
-//function killAllInArray(victims){
-  //for each (v in victims){
-  //  v.playing = false;
-//  }
-//}
+function killAllInArray(victims){
+  for (let i=0; i<victims.length; i++){
+    var v = victims[i]
+    v.playing = false;
+    Profiles.update(v._id, v);
+  }
+}
 
 
 //vvictims
@@ -102,6 +104,7 @@ Template.location.events({
   "click #kill"(event,instance){
     console.log('assassination started');
     var victims = getAllInRange(Profiles.findOne({owner:Meteor.user()._id}));
-    console.log(victims.length)
+    //console.log(victims.length);
+    killAllInArray(victims);
   }
 })
