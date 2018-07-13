@@ -99,6 +99,32 @@ function killAllInArray(victims){
   }
 }
 
+function shuffle() {
+    var array = Profiles.find().fetch();
+    var backup = array;
+    var counter = array.length;
+
+    // While there are elements in the array
+    while (counter > 0) {
+        // Pick a random index
+        let index = Math.floor(Math.random() * counter);
+
+        // Decrease counter by 1
+        counter--;
+
+        // And swap the last element with it
+        let temp = array[counter];
+        array[counter] = array[index];
+        array[index] = temp;
+    }
+    counter = array.length;
+    for(i=0; i<counter; i++){
+      console.log("new: " + array[i].name + " old: " + backup[i].name);
+      Profiles.update(backup[i]._id, array[i])
+    }
+}
+//taken from https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
+
 
 //vvictims
 Template.location.events({
@@ -110,5 +136,10 @@ Template.location.events({
       //console.log(victims.length);
       killAllInArray(victims);
     }
-  }
+  },
+
+  "click #start"(event,instance){
+    console.log('Game started');
+    shuffle()
+    }
 })
