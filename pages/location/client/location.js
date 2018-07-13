@@ -11,7 +11,6 @@ Template.location.helpers({
    },
  })
 //https://www.youtube.com/watch?v=dQw4w9WgXcQ
-
 Template.location_info.rendered = function(){
 
     let z = Geolocation.currentLocation()
