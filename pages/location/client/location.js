@@ -73,7 +73,7 @@ function getAllInRange(playerboi){
   }
 }
 
-function getAllInRange(p){
+/*function getAllInRange(p){
   var victims = {}
   var people = Profiles.find().aga();
   while(people.hasNext()){
@@ -84,6 +84,7 @@ function getAllInRange(p){
   }
   return victims;
 }
+*/
 
 //function killAllInArray(victims){
   //for each (v in victims){
