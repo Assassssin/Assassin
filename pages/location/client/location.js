@@ -43,7 +43,6 @@ function toRadians(x){
 
 function distance(lat1,lon1,lat2,lon2){
 var R = 6371e3; // metres
-//console.log(JSON.stringify([lat1,lon1,lat2,lon2]))
 var p1 = toRadians(lat1);
 var p2 = toRadians(lat2);
 var dp = toRadians(lat2-lat1);
@@ -55,7 +54,7 @@ var a = Math.sin(dp/2) * Math.sin(dp/2) +
 var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
 var d = R * c;
-//console.log(JSON.stringify([d,R,c,a]))
+console.log(JSON.stringify([d,R,c,a]))
 return d
 }
 
@@ -67,7 +66,7 @@ function getAllInRange(playerboi){
     console.log(playerboi.name)
     var p = people[i]
     // console.log(playerboi.location.lat)
-    var d = distance(playerboi.location.lat,playerboi.location.long, p.location.lat, p.location.long)
+    var d = distance(playerboi.location.lat,playerboi.location.lon, p.location.lat, p.location.lon)
     //var d=p.dist
     console.log('name: ' + p.name + ' distance: ' + d);
     if (d <= 5 && !(p == playerboi)){
