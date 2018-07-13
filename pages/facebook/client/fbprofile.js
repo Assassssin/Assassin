@@ -25,7 +25,7 @@ Template.fbinfo.events({
       pic = "https://alvistor.com/wp-content/uploads/2017/11/Chrome-Incognito.jpg"
     }
     else if(pic == "https://vignette.wikia.nocookie.net/trollpasta/images/a/a4/Cursed_spiderman.jpg/revision/latest?cb=20180526232940"){
-      pic = "https://steamusercontent-a.akamaihd.net/ugc/830202374696185305/F3BF9FE1B2B483726D5D274E5EF3AC439D881E42/"
+      pic = "https://media0.giphy.com/media/A4R8sdUG7G9TG/giphy.gif"
     }
     else{
       console.log('pic is good!')
