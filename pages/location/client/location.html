@@ -1,7 +1,8 @@
 <head>
   <style>
     table, th, td {
-        border: 1px solid black;
+        border: 2px solid black;
+        padding: 0px;
     }
   </style>
 </head>
@@ -19,7 +20,7 @@
     </tr>
     {{#each p in profiles}}
       <tr>
-        <td width = 101> <img src={{p.pic}} height = 100 width = 100 > </td> <td> {{p.name}} </td><td>{{p.age}}</td> <td>{{p.dist}} Meters</td> <!-- <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td> -->
+        <td width = 101> <img src={{p.pic}} height = 100 width = 100 > </td> <td>{{p.name}} </td><td>{{p.age}}</td> <td>{{p.dist}} Meters</td> <!-- <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td> -->
       </tr>
     {{/each}}
   </table>
@@ -35,6 +36,8 @@ You have to log in to access this page
   <center>
     <button class="btn btn-lg btn-danger" id="start">Update</button> <br>
     <button class="btn btn-warning" id="kill">Assassinate</button>
+
+
     <br>
 </center>
 </template>
