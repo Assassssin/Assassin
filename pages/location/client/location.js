@@ -62,15 +62,19 @@ return d
 
 function getAllInRange(playerboi){
   var victims = {};
-  var people = Profiles.find();
-  while(people.hasNext()){
-    var p = people.next();
-    if (distance(playerboi.location.lat,playerboi.location.long, p.location.lat, p.location.long) <= 5 && !(p == playerboi)){
+  var people = Profiles.find().fetch();
+  for(let i=0; i<people.length; i++){
+  //for (var p in people){
+    console.log(playerboi.name)
+    var p = people[i]
+    d = distance(playerboi.location.lat,playerboi.location.long, p.location.lat, p.location.long)
+    console.log('name: ' + p.name + ' distance: ' + d);
+    if (d <= 5 && !(p == playerboi)){
       victims.push(p);
-      //checks if the next player is both within a certain distance and makes sure that player is NOT themselves.
     }
-    return victims;
   }
+  //checks if the next player is both within a certain distance and makes sure that player is NOT themselves.
+  return victims;
 }
 
 /*function getAllInRange(p){
@@ -91,11 +95,13 @@ function getAllInRange(playerboi){
   //  v.playing = false;
 //  }
 //}
+
+
 //vvictims
-Template.fbinfo.events({
+Template.location.events({
   "click #kill"(event,instance){
     console.log('assassination started');
-    var victims = getAllInRange(this.user);
+    var victims = getAllInRange(Profiles.findOne({owner:Meteor.user()._id}));
     console.log(victims.length)
   }
 })
