@@ -65,9 +65,9 @@ function getAllInRange(playerboi){
   //for (var p in people){
     console.log(playerboi.name)
     var p = people[i]
-    console.log(p)
-    // console.log(playerboi.location.lat)
-    var d = distance(playerboi.location.lat,playerboi.location.lon, p.location.lat, p.location.lon)
+    if(p.location != undefined){
+      var d = distance(playerboi.location.lat,playerboi.location.lon, p.location.lat, p.location.lon)
+    }
     //var d=p.dist
     console.log('name: ' + p.name + ' distance: ' + d);
     if (d <= 5 && !(p._id == playerboi._id)){
