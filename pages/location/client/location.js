@@ -59,7 +59,7 @@ return d
 }
 
 function getAllInRange(playerboi){
-  var victims = {};
+  var victims = [];
   var people = Profiles.find().fetch();
   for(let i=0; i<people.length; i++){
   //for (var p in people){
