@@ -60,13 +60,14 @@ var d = R * c;
 return d
 }
 
-function getAllInRange(player){
+function getAllInRange(playerboi){
   var victims = {};
   var people = Profiles.find();
   while(people.hasNext()){
     var p = people.next();
-    if (distance(me.location.lat, me.location.long, p.location.lat, p.location.long) <= 5){
+    if (distance(playerboi.location.lat,playerboi.location.long, p.location.lat, p.location.long) <= 5 && !(p == playerboi)){
       victims.push(p);
+      //checks if the next player is both within a certain distance and makes sure that player is NOT themselves.
     }
     return victims;
   }
