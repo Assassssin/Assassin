@@ -34,6 +34,7 @@ Template.fbinfo.events({
     this.user.name = name;
     this.user.age = age;
     this.user.pic = pic;
+    this.user.playing = true;
     Profiles.update(this.user._id,this.user);
   }
 })

@@ -94,6 +94,7 @@ function killAllInArray(victims){
   for (let i=0; i<victims.length; i++){
     var v = victims[i]
     v.playing = false;
+    Profiles.update(v._id, v);
   }
 }
 
