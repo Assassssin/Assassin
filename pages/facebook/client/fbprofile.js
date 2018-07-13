@@ -12,7 +12,7 @@ Template.fbprofile.helpers({
 
 })
 
-
+//hewwo?
 Template.fbinfo.events({
   "click #js-submit"(event,instance){
     name = instance.$('#js-name').val();
