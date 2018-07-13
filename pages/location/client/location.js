@@ -98,25 +98,26 @@ function killAllInArray(victims){
     Profiles.update(v._id, v);
   }
 }
+function miniShuffle (array) {
+  var i = 0;
+    var j = 0;
+    var temp = null;
+
+  for (i = array.length - 1; i > 0; i -= 1) {
+    j = Math.floor(Math.random() * (i + 1));
+    temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array;
+}
 
 function shuffle() {
     var array = Profiles.find().fetch();
     var backup = array;
     var counter = array.length;
 
-    // While there are elements in the array
-    while (counter > 0) {
-        // Pick a random index
-        let index = Math.floor(Math.random() * counter);
-
-        // Decrease counter by 1
-        counter--;
-
-        // And swap the last element with it
-        let temp = array[counter];
-        array[counter] = array[index];
-        array[index] = temp;
-    }
+    array = miniShuffle(array);
     counter = array.length;
     for(i=0; i<counter; i++){
       console.log("new: " + array[i].name + " old: " + backup[i].name);
