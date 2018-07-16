@@ -24,6 +24,18 @@
       console.log(target.name)
       return target
     },
+    profiles_2(){
+       const ps = Profiles.find({location:{$exists:true}}).fetch()
+       //console.log("sending profiles")
+       //console.dir(ps)
+       const me = Profiles.findOne({owner:Meteor.user()._id})
+       //console.dir(['me=',me,Meteor.user()._id])
+       ps.map((p)=>{p.dist = distance(me.location.lat,me.location.lon,p.location.lat,p.location.lon)})
+       const target = Profiles.findOne ({_id:me.target})
+       target.dist = distance(me.location.lat, me.location.lon, target.location.lat, target.location.lon)
+       //console.dir(ps)
+       return ps
+     },
   })
 
 
