@@ -20,9 +20,11 @@
     </tr>
     {{#each p in profiles}}
       {{#if p.playing}}
-        <tr>
-          <td width = 101> <img src={{p.pic}} height = 100 width = 100 > </td> <td><center>{{p.name}} </center></td><td><center>{{p.age}}</center></td> <td> <center>{{p.dist}} Meters</center></td> <!-- <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td> -->
-        </tr>
+        {{#if currentUser.target equals p._id}}
+          <tr>
+            <td width = 101> <img src={{p.pic}} height = 100 width = 100 > </td> <td><center>{{p.name}} </center></td><td><center>{{p.age}}</center></td> <td> <center>{{p.dist}} Meters</center></td> <!-- <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td> -->
+          </tr>
+        {{/if}}
       {{/if}}
     {{/each}}
   </table>

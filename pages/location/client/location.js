@@ -120,10 +120,12 @@ function miniShuffle (array) {
     array = miniShuffle(array);
     counter = array.length;
     for(i=0; i<counter; i++){
-      console.log("new: " + array[i].name + " old: " + backup[i].name);
-      array[i]._id = backup[i]._id;
+      console.log("assassin: " + array[i].name + " target: " + backup[i].name);
+      array[i].target = backup[i]._id;
       Profiles.update(backup[i].name, array[i]);
     }
+    array[counter].target = backup[0]._id;
+    Profiles.update(backup[i].name, array[i]);
 }
 
 /* function shuffle(){
