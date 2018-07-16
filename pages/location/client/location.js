@@ -57,20 +57,20 @@ function toRadians(x){
 }
 
 function distance(lat1,lon1,lat2,lon2){
-var R = 6371e3; // metres
-var p1 = toRadians(lat1);
-var p2 = toRadians(lat2);
-var dp = toRadians(lat2-lat1);
-var dl = toRadians(lon2-lon1);
+  var R = 6371e3; // metres
+  var p1 = toRadians(lat1);
+  var p2 = toRadians(lat2);
+  var dp = toRadians(lat2-lat1);
+  var dl = toRadians(lon2-lon1);
 
-var a = Math.sin(dp/2) * Math.sin(dp/2) +
-        Math.cos(p1) * Math.cos(p2) *
-        Math.sin(dl/2) * Math.sin(dl/2);
-var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  var a = Math.sin(dp/2) * Math.sin(dp/2) +
+          Math.cos(p1) * Math.cos(p2) *
+          Math.sin(dl/2) * Math.sin(dl/2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-var d = R * c;
-console.log(JSON.stringify([d,R,c,a]))
-return d
+  var d = R * c;
+  console.log(JSON.stringify([d,R,c,a]))
+  return d
 }
 
 function getAllInRange(playerboi){
