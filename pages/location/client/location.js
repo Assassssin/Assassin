@@ -17,6 +17,12 @@
      console.dir(z)
      return z.playing
    },
+
+   gameOver(){
+     var z = Profiles.find({playing:true}).count()
+     return (z<=1)
+   },
+
    profiles(){
      return Profiles.find({location:{$exists:true}})
    },

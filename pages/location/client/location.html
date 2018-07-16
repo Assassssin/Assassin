@@ -17,6 +17,9 @@
   {{> location_info user=user}}
   <h3>Your target:</h3>
   {{#if alive}}
+    {{#if gameOver}}
+    <h1>You won</h1>
+    {{else}}
   <table style="width:100%">
     <tr>
       <th colspan = '2'> User: </th>
@@ -30,6 +33,7 @@
           </tr>
       {{/if}}
   </table>
+    {{/if}}
   {{else}}
   <h1 style="font:40pt bold times">YOU LOST!!! </h1>
   {{/if}}
