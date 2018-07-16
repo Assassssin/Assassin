@@ -35,7 +35,7 @@ Template.fbinfo.events({
     this.user.age = age;
     this.user.pic = pic;
     this.user.playing = true;
-    this.user.target = "";
+    this.user.target = "none";
     Profiles.update(this.user._id,this.user);
   }
 })

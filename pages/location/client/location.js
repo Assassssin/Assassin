@@ -1,4 +1,4 @@
-Template.location.helpers({
+/* Template.location.helpers({
   profiles(){
      const ps = Profiles.find({location:{$exists:true}}).fetch()
      //console.log("sending profiles")
@@ -9,8 +9,22 @@ Template.location.helpers({
      //console.dir(ps)
      return ps
    },
- })
-//https://www.youtube.com/watch?v=dQw4w9WgXcQ
+ }) */
+ Template.location.helpers({
+   profiles(){
+      const ps = Profiles.find({location:{$exists:true}}).fetch()
+      //console.log("sending profiles")
+      //console.dir(ps)
+      const me = Profiles.findOne({owner:Meteor.user()._id})
+      //console.dir(['me=',me,Meteor.user()._id])
+      ps.map((p)=>{p.dist = distance(me.location.lat,me.location.lon,p.location.lat,p.location.lon)})
+      const target = Profiles.findOne ({_id : me.target})
+      //console.dir(ps)
+      return target
+    },
+  })
+
+
 Template.location_info.rendered = function(){
 
     let z = Geolocation.currentLocation()
@@ -112,20 +126,39 @@ function miniShuffle (array) {
   return array;
 }
 
+function randomize (array, backup){
+  done = false;
+  while(done == false){
+    done = true;
+    for(i=0; i<array.length; i++){
+      if(array[i]._id == backup[i]._id){
+        done = false;
+        array = miniShuffle(array);
+      }
+    }
+  }
+  return array;
+}
+
  function shuffle() {
     var array = Profiles.find().fetch();
     var backup = Profiles.find().fetch();
     var counter = array.length;
 
-    array = miniShuffle(array);
+    array = randomize(array, backup);
     counter = array.length;
     for(i=0; i<counter; i++){
-      console.log("assassin: " + array[i].name + " target: " + backup[i].name);
-      array[i].target = backup[i]._id;
+      if(array[i] != undefined){
+        console.log("assassin: " + array[i].name + " target: " + backup[i].name);
+        array[i].target = backup[i]._id;
+        Profiles.update(array[i]._id, array[i]);
+        console.log(array[i].target)
+      }
+    }
+    if(array[counter] != undefined){
+      array[counter].target = backup[0]._id;
       Profiles.update(backup[i].name, array[i]);
     }
-    array[counter].target = backup[0]._id;
-    Profiles.update(backup[i].name, array[i]);
 }
 
 /* function shuffle(){
