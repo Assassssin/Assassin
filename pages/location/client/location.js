@@ -120,8 +120,11 @@ function getAllInRange(playerboi){
 function killAllInArray(victims){
   for (let i=0; i<victims.length; i++){
     var v = victims[i]
+    //v = the current player in victims.
     var player = Profiles.findOne({owner:Meteor.user()._id});
+    //I think this means it's finidng the person using the computer.
     if(v._id == player.target){
+      //if the current victim is the player's target then they're eliminated and the player is given their target.
       v.playing = false;
       Profiles.update(v._id, v);
       player.target = v.target;
