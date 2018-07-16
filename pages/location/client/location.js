@@ -112,18 +112,23 @@ function miniShuffle (array) {
   return array;
 }
 
-function shuffle() {
+ function shuffle() {
     var array = Profiles.find().fetch();
-    var backup = array;
+    var backup = Profiles.find().fetch();
     var counter = array.length;
 
     array = miniShuffle(array);
     counter = array.length;
     for(i=0; i<counter; i++){
       console.log("new: " + array[i].name + " old: " + backup[i].name);
-      Profiles.update(backup[i]._id, array[i])
+      array[i]._id = backup[i]._id;
+      Profiles.update(backup[i].name, array[i]);
     }
 }
+
+/* function shuffle(){
+  Profiles.update($sample: {size : Profiles.find().fetch().length()});
+} */
 //taken from https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
 
 
