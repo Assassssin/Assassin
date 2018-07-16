@@ -20,11 +20,12 @@ Template.fbinfo.events({
     console.log('just read '+age);
     pic = instance.$('#js-pic').val();
     console.log('just read '+pic);
-
+    if (name == "Kanye East")
+      name = "Not doing anything productive"
     if (pic == ""){
       pic = "https://lh3.googleusercontent.com/brHd5fX5bARzW6yG9gKw-hSwGJvnXFX5b7hujcxqS6eyOvwHae0E6O5JXzl5DXCNmOfEpjAMHxdhDcvFXp9X=w1920-h855-rw"
     }
-    else if(pic == "https://vignette.wikia.nocookie.net/trollpasta/images/a/a4/Cursed_spiderman.jpg/revision/latest?cb=20180526232940"){
+    else if(pic == "https://vignette.wikia.nocookie.net/trollpasta/images/a/a4/Cursed_spiderman.jpg/revision/latest?cb=20180526232940" || pic == "https://vignette.wikia.nocookie.net/creepypasta/images/a/a4/Cursed_spiderman.jpg/revision/latest?cb=20180526230243"){
       pic = "https://media0.giphy.com/media/A4R8sdUG7G9TG/giphy.gif"
     }
     else{
