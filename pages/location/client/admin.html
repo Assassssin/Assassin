@@ -1,0 +1,30 @@
+<head>
+  <style>
+    table, th, td {
+        border: 2px solid black;
+        padding: 0px;
+    }
+  </style>
+</head>
+
+<template name="admin">
+{{#if currentUser}}
+  <table style="width:100%">
+    <tr>
+      <th colspan = '2'> User: </th>
+      <th> Distance:</th>
+      <!-- <th> Latitude: </th>
+      <th> Longitude: </th> -->
+    </tr>
+    {{#each p in profiles_2}}
+          <tr>
+            <td width = 102> <img src={{p.pic}} height = 100 width = 100 > </td> <td><center>{{p.name}} </center></td> <td> <center>{{p.dist}} Meters</center></td> <!-- <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td> -->
+          </tr>
+    {{/each}}
+  </table>
+
+
+{{else}}
+You have to log in to access this page
+{{/if}}
+</template>
