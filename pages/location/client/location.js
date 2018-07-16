@@ -110,8 +110,11 @@ function getAllInRange(playerboi){
 function killAllInArray(victims){
   for (let i=0; i<victims.length; i++){
     var v = victims[i]
-    v.playing = false;
-    Profiles.update(v._id, v);
+    var player = Profiles.findOne({owner:Meteor.user()._id});
+    if(v._id == player.target){
+      v.playing = false;
+      Profiles.update(v._id, v);
+    }
   }
 }
 function miniShuffle (array) {
@@ -143,7 +146,7 @@ function randomize (array, backup){
 }
 
  function shuffle() {
-    var array = Profiles.find().fetch();
+    var array = Profiles.find({location:{$exists:true}}).fetch()
     var backup = Profiles.find().fetch();
     var counter = array.length;
 
