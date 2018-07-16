@@ -157,7 +157,7 @@ function randomize (array, backup){
   return array;
 }
 
- function shuffle() {
+ /*function shuffle() {
     var array = Profiles.find().fetch()
     var backup = Profiles.find().fetch();
     var counter = array.length;
@@ -176,19 +176,29 @@ function randomize (array, backup){
       array[counter].target = backup[0]._id;
       Profiles.update(backup[i].name, array[i]);
     }
+} */
+
+function shuffle(){
+  var targets = generateTargets();
+  console.log(targets);
+
+  counter = targets.length;
+  for(var i=0; i<counter; i++){
+    targets[i].playing = true;
+    Profiles.update(targets[i].name, targets[i]);
+  }
 }
 
 function generateTargets(){
   var array = Profiles.find().fetch();
   var target_pool = Profiles.find().fetch();
-  var output = {};
+  var output = Profiles.find().fetch();
 
-  for(i=0, i<array.length, i++){
-    var done = false;
-    while(!done){
+  for(var i=0; i<array.length; i++){
       var random = Math.floor(Math.random() * (target_pool.length + 1));
-      output[i] = target_pool[random];
-      target_pool.splice(i,0);
+      if(target_pool[random] != undefined){
+        output[i].target = target_pool[random]._id;
+        target_pool.splice(i,0);
     }
   }
   return output;
