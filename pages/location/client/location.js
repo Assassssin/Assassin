@@ -199,11 +199,6 @@ function shuffle(){
       console.log(i);
       array[i].target = array[i+1]._id;
       Profiles.update(array[i]._id, array[i]);
-    }else if(i==0){
-      console.log(i);
-      array[i].target = array[i+2]._id;
-      Profiles.update(array[i]._id, array[i]);
-    }
   }
   array[array.length].target = array[0]._id;
   Profiles.update(array[array.length]._id, array[array.length]);
