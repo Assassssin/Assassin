@@ -19,6 +19,7 @@
       //console.dir(['me=',me,Meteor.user()._id])
       ps.map((p)=>{p.dist = distance(me.location.lat,me.location.lon,p.location.lat,p.location.lon)})
       const target = Profiles.findOne ({_id:me.target})
+      target.dist = distance(me.location.lat, me.location.lon, target.location.lat, target.location.lon)
       //console.dir(ps)
       console.log(target.name)
       return target
@@ -150,7 +151,7 @@ function randomize (array, backup){
     counter = array.length;
     for(i=0; i<counter; i++){
       if(array[i] != undefined){
-        console.log("assassin: " + array[i].name + " target: " + backup[i].name);
+        console.log("distance: " + array[i].dist);
         array[i].target = backup[i]._id;
         Profiles.update(array[i]._id, array[i]);
         console.log(array[i].target)

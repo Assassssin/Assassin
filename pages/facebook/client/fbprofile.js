@@ -38,6 +38,7 @@ Template.fbinfo.events({
     this.user.playing = true;
     this.user.target = "none";
     this.user.location = Geolocation.currentLocation()
+    this.user.dist = undefined;
     Profiles.update(this.user._id,this.user);
   }
 })
