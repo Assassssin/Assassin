@@ -200,17 +200,6 @@ function randomize (array, backup){
 } */
 
 function shuffle(){
-  var targets = generateTargets();
-  console.log(targets);
-
-  counter = targets.length;
-  for(var i=0; i<counter; i++){
-    targets[i].playing = true;
-    Profiles.update(targets[i].name, targets[i]);
-  }
-} */
-
-function shuffle(){
   var array = _.shuffle(Profiles.find().fetch())
   for(var i=0; i<array.length-1; i++){
       console.log(i);
