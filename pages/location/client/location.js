@@ -178,6 +178,12 @@ function randomize (array, backup){
     }
 }
 
+function generateTargets(){
+  var array = Profiles.find().fetch();
+  var output = {};
+  
+}
+
 /* function shuffle(){
   Profiles.update($sample: {size : Profiles.find().fetch().length()});
 } */
