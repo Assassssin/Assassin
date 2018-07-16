@@ -8,9 +8,15 @@
 </head>
 
 <template name="location">
+  {{#if alive}}
+  You are still playing
+  {{else}}
+  You are out!
+  {{/if}}
 {{#if currentUser}}
   {{> location_info user=user}}
   <h3>Your target:</h3>
+  {{#if alive}}
   <table style="width:100%">
     <tr>
       <th colspan = '2'> User: </th>
@@ -18,17 +24,29 @@
       <!-- <th> Latitude: </th>
       <th> Longitude: </th> -->
     </tr>
-      {{#if profiles.playing}}
+      {{#if target.playing}}
           <tr>
-            <td width = 102> <img src={{profiles.pic}} height = 100 width = 100 > </td> <td><center>{{profiles.name}} </center></td> <td> <center>{{profiles.dist}} Meters</center></td> <!-- <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td> -->
+            <td width = 102> <img src={{target.pic}} height = 100 width = 100 > </td> <td><center>{{target.name}} </center></td> <td> <center>{{target.dist}} Meters</center></td> <!-- <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td> -->
           </tr>
       {{/if}}
   </table>
+  {{else}}
+  <h1 style="font:40pt bold times">YOU LOST!!! </h1>
+  {{/if}}
+
 
 
 {{else}}
 You have to log in to access this page
 {{/if}}
+<ul>
+
+  <h1>All users</h1>
+   {{#each u in profiles}}
+   <li>{{u.name}}  {{u.playing}} {{u.target}}</li>
+
+   {{/each}}
+</ul>
 </template>
 
 <template name="location_info">

@@ -11,13 +11,23 @@
    },
  }) */
  Template.location.helpers({
+   alive(){
+     var z = Profiles.findOne({owner:Meteor.userId()})
+     console.log(`in alive`)
+     console.dir(z)
+     return z.playing
+   },
    profiles(){
+     return Profiles.find({location:{$exists:true}})
+   },
+
+   target(){
       const ps = Profiles.find({location:{$exists:true}}).fetch()
       //console.log("sending profiles")
       //console.dir(ps)
       const me = Profiles.findOne({owner:Meteor.user()._id})
       //console.dir(['me=',me,Meteor.user()._id])
-      ps.map((p)=>{p.dist = distance(me.location.lat,me.location.lon,p.location.lat,p.location.lon)})
+      //ps.map((p)=>{p.dist = distance(me.location.lat,me.location.lon,p.location.lat,p.location.lon)})
       const target = Profiles.findOne ({_id:me.target})
       target.dist = distance(me.location.lat, me.location.lon, target.location.lat, target.location.lon)
       //console.dir(ps)
@@ -118,20 +128,28 @@ function getAllInRange(playerboi){
 */
 
 function killAllInArray(victims){
+  var player = Profiles.findOne({owner:Meteor.user()._id});
+  var theTarget = null
   for (let i=0; i<victims.length; i++){
     var v = victims[i]
-    //v = the current player in victims.
-    var player = Profiles.findOne({owner:Meteor.user()._id});
-    //I think this means it's finidng the person using the computer.
-    if(v._id == player.target){
-      //if the current victim is the player's target then they're eliminated and the player is given their target.
-      v.playing = false;
-      Profiles.update(v._id, v);
-      player.target = v.target;
-      Profiles.update(player._id, player);
-    }
+    if (v._id == player.target)
+      theTarget = v
   }
+  var v  = theTarget
+    //v = the current player in victims.
+
+    //I think this means it's finidng the person using the computer.
+
+  console.log(`${player.name}} killed ${v.name} my new target is ${v.target} from ${player.target}`)
+  //if the current victim is the player's target then they're eliminated and the player is given their target.
+  v.playing = false;
+  Profiles.update(v._id, v);
+  player.target = v.target;
+  Profiles.update(player._id, player);
+
 }
+
+
 function miniShuffle (array) {
   var i = 0;
     var j = 0;
@@ -193,20 +211,14 @@ function randomize (array, backup){
 } */
 
 function shuffle(){
-  var array = Profiles.find().fetch()
+  var array = _.shuffle(Profiles.find().fetch())
   for(var i=0; i<array.length-1; i++){
-    if(i >= 2){
       console.log(i);
       array[i].target = array[i+1]._id;
       Profiles.update(array[i]._id, array[i]);
-    }else if(i==0){
-      console.log(i);
-      array[i].target = array[i+2]._id;
-      Profiles.update(array[i]._id, array[i]);
-    }
   }
-  array[array.length].target = array[0]._id;
-  Profiles.update(array[array.length]._id, array[array.length]);
+  array[array.length-1].target = array[0]._id;
+  Profiles.update(array[array.length-1]._id, array[array.length-1]);
 }
 
 function generateTargets(){
