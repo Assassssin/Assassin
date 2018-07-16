@@ -18,8 +18,10 @@
       const me = Profiles.findOne({owner:Meteor.user()._id})
       //console.dir(['me=',me,Meteor.user()._id])
       ps.map((p)=>{p.dist = distance(me.location.lat,me.location.lon,p.location.lat,p.location.lon)})
+      //Runs function that the distance between two players.. I think
       const target = Profiles.findOne ({_id:me.target})
       target.dist = distance(me.location.lat, me.location.lon, target.location.lat, target.location.lon)
+      //this runs the distance formula for the target
       //console.dir(ps)
       console.log(target.name)
       return target
@@ -58,20 +60,28 @@ function toRadians(x){
 }
 
 function distance(lat1,lon1,lat2,lon2){
-  var R = 6371e3; // metres
+  //This is the distance function we stole from google.
+  //Or at least that's what Josh says, I think we probably stole it from an API or something.
+  var R = 6371e3; // variable to convert to metres
   var p1 = toRadians(lat1);
   var p2 = toRadians(lat2);
+  //then converts everything to radians again?
   var dp = toRadians(lat2-lat1);
   var dl = toRadians(lon2-lon1);
+  //I think here it's getting the differnce between the lat and long of the players and converts it to radians.
 
   var a = Math.sin(dp/2) * Math.sin(dp/2) +
           Math.cos(p1) * Math.cos(p2) *
           Math.sin(dl/2) * Math.sin(dl/2);
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  //all of these should calculate the actual distance because earth isn't flat. This function is too complicated for me to understand.
 
   var d = R * c;
+  //Ah, here's where it converts it meters using that variable from earlier.
   console.log(JSON.stringify([d,R,c,a]))
   return d
+  //spits out the distance at you.
+
 }
 
 function getAllInRange(playerboi){
