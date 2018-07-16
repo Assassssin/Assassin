@@ -19,6 +19,7 @@
       //console.dir(['me=',me,Meteor.user()._id])
       ps.map((p)=>{p.dist = distance(me.location.lat,me.location.lon,p.location.lat,p.location.lon)})
       const target = Profiles.findOne ({_id:me.target})
+      target.dist = distance(me.location.lat, me.location.lon, target.location.lat, target.location.lon)
       //console.dir(ps)
       console.log(target.name)
       return target
@@ -57,20 +58,20 @@ function toRadians(x){
 }
 
 function distance(lat1,lon1,lat2,lon2){
-var R = 6371e3; // metres
-var p1 = toRadians(lat1);
-var p2 = toRadians(lat2);
-var dp = toRadians(lat2-lat1);
-var dl = toRadians(lon2-lon1);
+  var R = 6371e3; // metres
+  var p1 = toRadians(lat1);
+  var p2 = toRadians(lat2);
+  var dp = toRadians(lat2-lat1);
+  var dl = toRadians(lon2-lon1);
 
-var a = Math.sin(dp/2) * Math.sin(dp/2) +
-        Math.cos(p1) * Math.cos(p2) *
-        Math.sin(dl/2) * Math.sin(dl/2);
-var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  var a = Math.sin(dp/2) * Math.sin(dp/2) +
+          Math.cos(p1) * Math.cos(p2) *
+          Math.sin(dl/2) * Math.sin(dl/2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-var d = R * c;
-console.log(JSON.stringify([d,R,c,a]))
-return d
+  var d = R * c;
+  console.log(JSON.stringify([d,R,c,a]))
+  return d
 }
 
 function getAllInRange(playerboi){
@@ -150,7 +151,7 @@ function randomize (array, backup){
     counter = array.length;
     for(i=0; i<counter; i++){
       if(array[i] != undefined){
-        console.log("assassin: " + array[i].name + " target: " + backup[i].name);
+        console.log("distance: " + array[i].dist);
         array[i].target = backup[i]._id;
         Profiles.update(array[i]._id, array[i]);
         console.log(array[i].target)
