@@ -27,7 +27,7 @@ Template.fbinfo.events({
       name = "Mr.Cockroach"
     }
     if (pic == ""){
-      pic = "https://lh3.googleusercontent.com/brHd5fX5bARzW6yG9gKw-hSwGJvnXFX5b7hujcxqS6eyOvwHae0E6O5JXzl5DXCNmOfEpjAMHxdhDcvFXp9X=w1920-h855-rw"
+      pic = "Logo.png"
     }
     else if(pic == "https://vignette.wikia.nocookie.net/trollpasta/images/a/a4/Cursed_spiderman.jpg/revision/latest?cb=20180526232940" || pic == "https://vignette.wikia.nocookie.net/creepypasta/images/a/a4/Cursed_spiderman.jpg/revision/latest?cb=20180526230243"){
       pic = "https://media0.giphy.com/media/A4R8sdUG7G9TG/giphy.gif"
