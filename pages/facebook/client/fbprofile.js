@@ -22,6 +22,10 @@ Template.fbinfo.events({
     console.log('just read '+pic);
     if (name == "Kanye East")
       name = "Not doing anything productive"
+    if (name == "anonymous1")
+    {
+      name = "Mr.Cockroach"
+    }
     if (pic == ""){
       pic = "https://lh3.googleusercontent.com/brHd5fX5bARzW6yG9gKw-hSwGJvnXFX5b7hujcxqS6eyOvwHae0E6O5JXzl5DXCNmOfEpjAMHxdhDcvFXp9X=w1920-h855-rw"
     }
