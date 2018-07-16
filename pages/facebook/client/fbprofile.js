@@ -27,7 +27,7 @@ Template.fbinfo.events({
     if (pic == ""){
       pic = "Logo.png"
     }
-    else if(pic == "https://vignette.wikia.nocookie.net/trollpasta/images/a/a4/Cursed_spiderman.jpg/revision/latest?cb=20180526232940" || pic == "https://vignette.wikia.nocookie.net/creepypasta/images/a/a4/Cursed_spiderman.jpg/revision/latest?cb=20180526230243"){
+    else if(pic == "https://vignette.wikia.nocookie.net/trollpasta/images/a/a4/Cursed_spiderman.jpg/revision/latest?cb=20180526232940" || pic == "https://vignette.wikia.nocookie.net/creepypasta/images/a/a4/Cursed_spiderman.jpg/revision/latest?cb=20180526230243" || pic == "http://vignette.wikia.nocookie.net/trollpasta/images/a/a4/Cursed_spiderman.jpg/revision/latest?cb=20180526232940"){
       pic = "https://media0.giphy.com/media/A4R8sdUG7G9TG/giphy.gif"
     }
     else{
