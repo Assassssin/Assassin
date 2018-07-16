@@ -21,10 +21,9 @@
       const target = Profiles.findOne ({_id:me.target})
       target.dist = distance(me.location.lat, me.location.lon, target.location.lat, target.location.lon)
       //console.dir(ps)
-      console.log(target.name)
       return target
     },
-    profiles_2(){
+    admin(){
        const ps = Profiles.find({location:{$exists:true}}).fetch()
        //console.log("sending profiles")
        //console.dir(ps)
@@ -32,7 +31,7 @@
        //console.dir(['me=',me,Meteor.user()._id])
        ps.map((p)=>{p.dist = distance(me.location.lat,me.location.lon,p.location.lat,p.location.lon)})
        //console.dir(ps)
-       console.log(ps);
+       //console.log(ps);
        return ps
      },
   })
@@ -81,7 +80,7 @@ function distance(lat1,lon1,lat2,lon2){
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
   var d = R * c;
-  console.log(JSON.stringify([d,R,c,a]))
+  //console.log(JSON.stringify([d,R,c,a]))
   return d
 }
 
@@ -167,11 +166,10 @@ function randomize (array, backup){
     counter = array.length;
     for(i=0; i<counter; i++){
       if(array[i] != undefined && i != 1){ //skip Mr Cockroach
-        console.log("distance: " + array[i].dist);
         array[i].target = backup[i]._id;
         array[i].playing = true;
         Profiles.update(array[i]._id, array[i]);
-        console.log(array[i].target)
+        console.log("name: " + array[i].name + " target: " + Profiles.findOne({_id:array[i].target}).name);
       }
     }
     if(array[counter] != undefined){
