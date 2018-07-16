@@ -31,9 +31,8 @@
        const me = Profiles.findOne({owner:Meteor.user()._id})
        //console.dir(['me=',me,Meteor.user()._id])
        ps.map((p)=>{p.dist = distance(me.location.lat,me.location.lon,p.location.lat,p.location.lon)})
-       const target = Profiles.findOne ({_id:me.target})
-       target.dist = distance(me.location.lat, me.location.lon, target.location.lat, target.location.lon)
        //console.dir(ps)
+       console.log(ps);
        return ps
      },
   })
@@ -98,7 +97,7 @@ function getAllInRange(playerboi){
     }
     //var d=p.dist
     console.log('name: ' + p.name + ' distance: ' + d);
-    if (d <= 5 && !(p._id == playerboi._id)){
+    if (d <= 5000 && !(p._id == playerboi._id)){
       victims.push(p);
     }
   }
@@ -170,6 +169,7 @@ function randomize (array, backup){
       if(array[i] != undefined && i != 1){ //skip Mr Cockroach
         console.log("distance: " + array[i].dist);
         array[i].target = backup[i]._id;
+        array[i].playing = true;
         Profiles.update(array[i]._id, array[i]);
         console.log(array[i].target)
       }
