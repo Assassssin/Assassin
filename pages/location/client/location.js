@@ -245,4 +245,4 @@ Template.location.events({
     console.log('Game started');
     shuffle()
     }
-})
+})x
