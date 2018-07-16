@@ -4,6 +4,14 @@
         border: 2px solid black;
         padding: 0px;
     }
+
+    .redtext {
+      color: red;
+    }
+
+    .greentext {
+      color: green;
+    }
   </style>
 </head>
 
@@ -49,13 +57,17 @@ You have to log in to access this page
 <table style="width:100%">
   <tr>
     <th colspan = '2'> User: </th>
-    <th> Alive: </th>
+    <th> Status: </th>
     <!-- <th> Latitude: </th>
     <th> Longitude: </th> -->
   </tr>
   {{#each p in admin}}
         <tr>
-          <td width = 102> <img src={{p.pic}} height = 100 width = 100 > </td> <td><center>{{p.name}} </center></td> <td> <center> {{p.playing}} </center> </td><!-- <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td> -->
+          <td width = 102> <img src={{p.pic}} height = 100 width = 100 > </td>
+
+          <td><center>{{p.name}} </center></td>
+
+          {{#if p.playing}}<td class='greentext'> <center>  Alive </center> </td> {{else}} <td class='redtext'> <center>  Dead </center> </td> {{/if}}<!-- <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td> -->
         </tr>
   {{/each}}
 </table>
@@ -64,7 +76,7 @@ You have to log in to access this page
 <template name="location_info">
   <hr>
   <center>
-    <button class="btn btn-lg btn-danger" id="start">Start Game</button> <br>
+    <button class="btn btn-lg btn-danger" id="start">Start Game</button> <br> <br />
     <button class="btn btn-warning" id="kill">Assassinate</button>
 
 
