@@ -114,6 +114,8 @@ function killAllInArray(victims){
     if(v._id == player.target){
       v.playing = false;
       Profiles.update(v._id, v);
+      player.target = v.target;
+      Profiles.update(player._id, player);
     }
   }
 }
@@ -146,14 +148,14 @@ function randomize (array, backup){
 }
 
  function shuffle() {
-    var array = Profiles.find({location:{$exists:true}}).fetch()
+    var array = Profiles.find().fetch()
     var backup = Profiles.find().fetch();
     var counter = array.length;
 
     array = randomize(array, backup);
     counter = array.length;
     for(i=0; i<counter; i++){
-      if(array[i] != undefined){
+      if(array[i] != undefined && i != 1){ //skip Mr Cockroach
         console.log("distance: " + array[i].dist);
         array[i].target = backup[i]._id;
         Profiles.update(array[i]._id, array[i]);
