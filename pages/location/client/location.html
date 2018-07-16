@@ -15,11 +15,11 @@
   {{/if}}
 {{#if currentUser}}
   {{> location_info user=user}}
-  <h3>Your target:</h3>
   {{#if alive}}
     {{#if gameOver}}
-    <h1>You won</h1>
+    <center><h1 style="font:40pt bold times">YOU WON!</h1></center>
     {{else}}
+    <h3>Your target:</h3>
   <table style="width:100%">
     <tr>
       <th colspan = '2'> User: </th>
@@ -35,7 +35,7 @@
   </table>
     {{/if}}
   {{else}}
-  <h1 style="font:40pt bold times">YOU LOST!!! </h1>
+<center>  <h1 style="font:40pt bold times">YOU ARE OUT!</h1></center>
   {{/if}}
 
 
@@ -43,14 +43,22 @@
 {{else}}
 You have to log in to access this page
 {{/if}}
-<ul>
 
-  <h1>All users</h1>
-   {{#each u in profiles}}
-   <li>{{u.name}}  {{u.playing}} {{u.target}}</li>
+  <h3>All users:</h3>
 
-   {{/each}}
-</ul>
+<table style="width:100%">
+  <tr>
+    <th colspan = '2'> User: </th>
+    <th> Alive: </th>
+    <!-- <th> Latitude: </th>
+    <th> Longitude: </th> -->
+  </tr>
+  {{#each p in admin}}
+        <tr>
+          <td width = 102> <img src={{p.pic}} height = 100 width = 100 > </td> <td><center>{{p.name}} </center></td> <td> <center> {{p.playing}} </center> </td><!-- <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td> -->
+        </tr>
+  {{/each}}
+</table>
 </template>
 
 <template name="location_info">
