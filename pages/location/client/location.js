@@ -18,8 +18,9 @@
       const me = Profiles.findOne({owner:Meteor.user()._id})
       //console.dir(['me=',me,Meteor.user()._id])
       ps.map((p)=>{p.dist = distance(me.location.lat,me.location.lon,p.location.lat,p.location.lon)})
-      const target = Profiles.findOne ({_id : me.target})
+      const target = Profiles.findOne ({_id:me.target})
       //console.dir(ps)
+      console.log(target.name)
       return target
     },
   })
