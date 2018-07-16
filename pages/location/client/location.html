@@ -13,14 +13,13 @@
   <table style="width:100%">
     <tr>
       <th colspan = '2'> User: </th>
-      <th> Age: </th>
       <th> Distance:</th>
       <!-- <th> Latitude: </th>
       <th> Longitude: </th> -->
     </tr>
       {{#if profiles.playing}}
           <tr>
-            <td width = 102> <img src={{profiles.pic}} height = 100 width = 100 > </td> <td><center>{{profiles.name}} </center></td><td><center>{{profiles.age}}</center></td> <td> <center>{{profiles.dist}} Meters</center></td> <!-- <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td> -->
+            <td width = 102> <img src={{profiles.pic}} height = 100 width = 100 > </td> <td><center>{{profiles.name}} </center></td> <td> <center>{{profiles.dist}} Meters</center></td> <!-- <td> {{p.location.lat}} </td><td> {{p.location.lon}} </td> -->
           </tr>
       {{/if}}
   </table>
