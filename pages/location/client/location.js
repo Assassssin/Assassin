@@ -180,8 +180,18 @@ function randomize (array, backup){
 
 function generateTargets(){
   var array = Profiles.find().fetch();
+  var target_pool = Profiles.find().fetch();
   var output = {};
-  
+
+  for(i=0, i<array.length, i++){
+    var done = false;
+    while(!done){
+      var random = Math.floor(Math.random() * (target_pool.length + 1));
+      output[i] = target_pool[random];
+      target_pool.splice(i,0);
+    }
+  }
+  return output;
 }
 
 /* function shuffle(){
