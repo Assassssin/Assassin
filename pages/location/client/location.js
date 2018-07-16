@@ -91,7 +91,7 @@ function getAllInRange(playerboi){
   //for (var p in people){
     console.log(playerboi.name)
     var p = people[i]
-    if(p.location){
+    if(p.location != undefined){
       var d = distance(playerboi.location.lat,playerboi.location.lon, p.location.lat, p.location.lon)
     }
     //var d=p.dist
@@ -160,7 +160,7 @@ function randomize (array, backup){
   return array;
 }
 
-/* function shuffle() {
+ /*function shuffle() {
     var array = Profiles.find().fetch()
     var backup = Profiles.find().fetch();
     var counter = array.length;
@@ -168,20 +168,20 @@ function randomize (array, backup){
     array = randomize(array, backup);
     counter = array.length;
     for(i=0; i<counter; i++){
-      if(array[i] != undefined && i != 1){ //skip Mr. Cockroach
-        backup[i].target = array[i]._id;
-        backup[i].playing = true;
-        Profiles.update(backup[i]._id, backup[i]);
-        //console.log("name: " + array[i].name + " target: " + Profiles.findOne({_id:array[i].target}).name);
+      if(array[i] != undefined && i != 1){ //skip Mr Cockroach
+        array[i].target = backup[i]._id;
+        array[i].playing = true;
+        Profiles.update(array[i]._id, array[i]);
+        console.log("name: " + array[i].name + " target: " + Profiles.findOne({_id:array[i].target}).name);
       }
     }
-    //if(array[counter] != undefined){
-      backup[counter].target = array[0]._id;
-      Profiles.update(backup[counter]._id, backup[i]);
-    //}
+    if(array[counter] != undefined){
+      array[counter].target = backup[0]._id;
+      Profiles.update(backup[i].name, array[i]);
+    }
 } */
 
-/* function shuffle(){
+function shuffle(){
   var targets = generateTargets();
   console.log(targets);
 
@@ -190,6 +190,7 @@ function randomize (array, backup){
     targets[i].playing = true;
     Profiles.update(targets[i].name, targets[i]);
   }
+<<<<<<< HEAD
 } */
 
 function shuffle(){
@@ -202,16 +203,19 @@ function shuffle(){
   }
   array[array.length].target = array[0]._id;
   Profiles.update(array[array.length]._id, array[array.length]);
+=======
+>>>>>>> c2cf8e7378dbb1d6cdfc273491750535f1f0ccef
 }
 
 function generateTargets(){
+  //Currently doesn't do anything.
   var array = Profiles.find().fetch();
   var target_pool = Profiles.find().fetch();
   var output = Profiles.find().fetch();
 
   for(var i=0; i<array.length; i++){
       var random = Math.floor(Math.random() * (target_pool.length + 1));
-      if(target_pool[random]){
+      if(target_pool[random] != undefined){
         output[i].target = target_pool[random]._id;
         target_pool.splice(i,0);
     }
