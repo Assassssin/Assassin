@@ -1,8 +1,8 @@
 const team =
   [
-    {name:"Ian", email: "Ian@micrognomics.com" },
+    {name:"Ian Erickson", email: "Ian@micrognomics.com" },
     {name:"Felix", email:"??"},
-    {name:"Tani", email:"tani@greenehouse.com"},
+    {name:"Tani Greene", email:"tani@greenehouse.com"},
     {name:"Josh", email:"??"}
   ];
 
