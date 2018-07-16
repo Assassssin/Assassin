@@ -114,6 +114,8 @@ function killAllInArray(victims){
     if(v._id == player.target){
       v.playing = false;
       Profiles.update(v._id, v);
+      player.target = v.target;
+      Profiles.update(player._id, player);
     }
   }
 }
