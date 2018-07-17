@@ -20,7 +20,7 @@ Template.fbinfo.events({
     console.log('just read '+pic);
     if (name == "Kanye East")
       name = "Not doing anything productive"
-    if (name == "anonymous1")
+    if (name == "Cockroach")
     {
       name = "Mr.Cockroach"
     }
