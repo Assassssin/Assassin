@@ -124,8 +124,13 @@ function getAllInRange(playerboi){
     }
     //var d=p.dist
     //console.log('yo bitch assassinating some fukck name: ' + p.name + ' distance: ' + d);
-        console.log('yayyyayayayyay: ' + d<=5);
-    if (d <= 5 && !(p._id == playerboi._id)){
+    //:( :( :( :( :(
+    console.log(':( :( :( :( :(')
+    var bool =  d<=5;
+    console.log('yayyyayayayyay: '+d + " yo liek teh b00l " + bool);
+    //if (d <= 5 && !(p._id == playerboi._id)){
+    if (d <= 5 && (p._id == playerboi.target)){
+      console.log('sly marbo');
       victims.push(p);
     }
   }
