@@ -156,6 +156,28 @@ function killAllInArray(victims){
 
 }
 
+function findVictim(array){
+  var player = Profiles.findOne({owner:Meteor.user()._id});
+  for(var i =0; i<array.length; i++){
+    if(array[i]._id == player.target){
+      return array[i];
+    }
+  }
+  return false;
+}
+
+function killTarget(array){
+  var player = Profiles.findOne({owner:Meteor.user()._id});
+  target = findVictim(array);
+  if(target){
+    target.playing = false;
+    profiles.update(target._id, target);
+
+    player.target = target.target;
+    profiles.update(target_id, target);
+  }
+}
+
 
 function miniShuffle (array) {
   var i = 0;
@@ -250,7 +272,8 @@ Template.location.events({
     if(player.playing){
       var victims = getAllInRange(Profiles.findOne({owner:Meteor.user()._id}));
       //console.log(victims.length);
-      killAllInArray(victims);
+      //killAllInArray(victims);
+      killTarget(victims);
     }
   },
 
