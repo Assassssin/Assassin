@@ -51,6 +51,16 @@
        //console.log(ps);
        return ps
      },
+     location(){
+       let z = Geolocation.currentLocation()
+       var theProfile = Profiles.findOne({owner:Meteor.userId()});
+       console.log(" did a thing " +theProfile+ " "+ z)
+         if (theProfile && z){
+         theProfile.location = {lat:z.coords.latitude, lon:z.coords.longitude}
+         Profiles.update(theProfile._id,theProfile)
+       }
+       return z
+     }
   })
 
 
@@ -58,6 +68,7 @@ Template.location_info.rendered = function(){
 
     let z = Geolocation.currentLocation()
     var theProfile = Profiles.findOne({owner:Meteor.userId()});
+    console.log(" did a thing " +theProfile+ " "+ z)
     if (theProfile && z){
       theProfile.location = {lat:z.coords.latitude, lon:z.coords.longitude}
       Profiles.update(theProfile._id,theProfile)
@@ -112,8 +123,9 @@ function getAllInRange(playerboi){
       var d = distance(playerboi.location.lat,playerboi.location.lon, p.location.lat, p.location.lon)
     }
     //var d=p.dist
-    console.log('name: ' + p.name + ' distance: ' + d);
-    if (d <= 5000 && !(p._id == playerboi._id)){
+    //console.log('yo bitch assassinating some fukck name: ' + p.name + ' distance: ' + d);
+        console.log('yayyyayayayyay: ' + d<=5);
+    if (d <= 5 && !(p._id == playerboi._id)){
       victims.push(p);
     }
   }
