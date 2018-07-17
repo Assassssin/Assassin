@@ -17,9 +17,9 @@
 
 <template name="location">
   {{#if alive}}
-  You are still playing
+  <center><h2 class = "greentext">You are in!</h2></center>
   {{else}}
-  You are out!
+  <center> <h2 class = 'redtext'> You are out! </h2> </center>
   {{/if}}
 {{#if currentUser}}
   {{> location_info user=user}}
