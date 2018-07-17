@@ -122,6 +122,9 @@ function getAllInRange(playerboi){
     if(p.location != undefined){
       var d = distance(playerboi.location.lat,playerboi.location.lon, p.location.lat, p.location.lon)
     }
+    else{
+      var d = 2
+    }
     //var d=p.dist
     //console.log('yo bitch assassinating some fukck name: ' + p.name + ' distance: ' + d);
     //:( :( :( :( :(
